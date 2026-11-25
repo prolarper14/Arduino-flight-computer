@@ -7,13 +7,19 @@ float accelPitch = 0;
 float gyroX = 0;
 float gyroY = 0;
 
-float dt = 0.01;
+unsigned long previousTime = 0;
+float dt = 0;
 
 void setup() {
   Serial.begin(9600);
+  previousTime = micros();
 }
 
 void loop() {
+
+ unsigned long currentTime = micros();
+ dt = (currentTime - previousTime) / 1000000.0
+ previousTime = currentTime;
 
   // Simulated sensor readings
   accelRoll = 10;
